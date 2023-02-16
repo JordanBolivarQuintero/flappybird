@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace FlappyBird
 {
@@ -39,7 +38,10 @@ namespace FlappyBird
 
             if (onGameOver != null)
                 onGameOver.Invoke();
+        }
 
+        public void RestartGame()
+        {
             StartCoroutine(ReloadScene());
         }
 
@@ -50,11 +52,12 @@ namespace FlappyBird
             if (onIncreaseScore != null)
                 onIncreaseScore.Invoke();
         }
+
         private IEnumerator ReloadScene()
         {
             yield return new WaitForSeconds(timeToReloadScene);
 
-            SceneManager.LoadScene(0);
+            SceneManagerC.Instance.LoadScene_(1);
         }
     }
 }

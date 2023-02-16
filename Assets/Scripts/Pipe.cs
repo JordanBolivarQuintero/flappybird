@@ -27,7 +27,7 @@ namespace FlappyBird
         {
             yield return new WaitForSeconds(timeToDestroyPipe);
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
